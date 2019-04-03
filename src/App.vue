@@ -7,12 +7,24 @@
         <span class="tool-name">Sentry</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>settings</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>person</v-icon>
-      </v-btn>
+      <div v-if="user">
+        <span>{{user.email}}</span>
+        <v-btn icon>
+          <v-icon>settings</v-icon>
+        </v-btn>
+        <v-menu close-on-click top offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn icon v-on="on">
+              <v-icon>person</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-tile @click="logout">
+              <v-list-tile-title>Logout</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </div>
     </v-toolbar>
 
     <v-content>
@@ -40,6 +52,16 @@ export default {
     return {
       //
     };
+  },
+  methods: {
+    logout: function() {
+      this.$store.dispatch("auth/logout");
+    }
+  },
+  computed: {
+    user: function() {
+      return this.$store.state.auth.user;
+    }
   }
 };
 </script>

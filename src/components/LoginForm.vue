@@ -3,6 +3,7 @@
     <v-text-field
       autofocus
       v-model="email"
+      value="ruby"
       :rules="emailRules"
       label="Email"
       prepend-inner-icon="person"
@@ -22,11 +23,18 @@
       prepend-inner-icon="lock"
       required
       box
+      @keydown.enter="login"
     ></v-text-field>
     <v-container>
       <v-layout row>
         <v-flex justify-center>
-          <v-btn :disabled="!valid" @click="validate" class="justify-right" block>Log In</v-btn>
+          <v-btn
+            :disabled="!valid"
+            @click="login"
+            @keydown.enter="login"
+            class="justify-right"
+            block
+          >Log In</v-btn>
         </v-flex>
       </v-layout>
     </v-container>
@@ -64,6 +72,16 @@ export default {
     },
     resetValidation() {
       this.$refs.form.resetValidation();
+    },
+    login: function(e) {
+      console.log(this.password);
+      this.$store.dispatch("auth/authenticate", {
+        strategy: "local",
+        email: this.email,
+        password: this.password
+      });
+
+      e.preventDefault();
     }
   }
 };
