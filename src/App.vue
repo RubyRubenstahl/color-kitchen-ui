@@ -1,33 +1,7 @@
 <template>
   <v-app dark>
-    <nav-drawer></nav-drawer>
-
-    <v-toolbar app fixed clipped-left>
-      <v-toolbar-title class="headline text-uppercase">
-        <img src="/images/krohtech-logo.png" height="32" class="logo">
-        <span class="font-weight-light">KROHTOOLS</span>
-        <span class="tool-name">Sentry</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <div v-if="user">
-        <v-menu close-on-click bottom offset-y transition="scale-transition">
-          <template v-slot:activator="{ on }">
-            <v-btn class="user-button" flat v-on="on">
-              <div>{{user.email}}</div>&nbsp;&nbsp;
-              <v-icon>person</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-tile @click="logout">
-              <v-list-tile-avatar>
-                <v-icon>exit_to_app</v-icon>
-              </v-list-tile-avatar>
-              <v-list-tile-title>Logout</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
-      </div>
-    </v-toolbar>
+    <nav-drawer/>
+    <app-toolbar/>
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -36,10 +10,10 @@
 
 <script>
 import NavDrawer from "./views/NavDrawer";
+import AppToolbar from "./components/AppToolbar";
 export default {
   name: "App",
-
-  components: { NavDrawer },
+  components: { NavDrawer, AppToolbar },
   mounted() {
     this.$store.dispatch("auth/authenticate").catch(error => {
       if (!error.message.includes("Could not find stored JWT")) {
@@ -67,11 +41,7 @@ export default {
       //
     };
   },
-  methods: {
-    logout: function() {
-      this.$store.dispatch("auth/logout");
-    }
-  },
+
   computed: {
     user: function() {
       return this.$store.state.auth.user;
