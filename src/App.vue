@@ -28,23 +28,40 @@
     </v-toolbar>
 
     <v-content>
-      <HelloWorld/>
+      <login-card/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import LoginCard from "./components/LoginCard";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    LoginCard
+  },
+  mounted() {
+    this.$store.dispatch("auth/authenticate").catch(error => {
+      if (!error.message.includes("Could not find stored JWT")) {
+        console.error(error);
+      }
+    });
   },
   data() {
     return {
       //
     };
+  },
+  methods: {
+    logout: function() {
+      this.$store.dispatch("auth/logout");
+    }
+  },
+  computed: {
+    user: function() {
+      return this.$store.state.auth.user;
+    }
   }
 };
 </script>
