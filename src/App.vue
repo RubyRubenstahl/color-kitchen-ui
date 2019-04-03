@@ -22,14 +22,21 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import HelloWorld from "./components/HelloWorld";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     HelloWorld
   },
-  data () {
+  mounted() {
+    this.$store.dispatch("auth/authenticate").catch(error => {
+      if (!error.message.includes("Could not find stored JWT")) {
+        console.error(error);
+      }
+    });
+  },
+  data() {
     return {
       //
     };
@@ -41,11 +48,11 @@ export default {
   margin-bottom: 6px;
   margin-right: 6px;
   vertical-align: middle;
-    }
+}
 .tool-name {
   color: #f24f4f;
   padding-left: 4px;
-  }
+}
 .headline {
   text-shadow: 1px 1px 6px #ffffff3b;
 }
