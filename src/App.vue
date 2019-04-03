@@ -1,17 +1,17 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <img src="/images/krohtech-logo.png" height="32" class="logo">
+        <span class="font-weight-light">KROHTOOLS</span>
+        <span class="tool-name">Sentry</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
+      <v-btn icon>
+        <v-icon>settings</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>person</v-icon>
       </v-btn>
     </v-toolbar>
 
@@ -32,7 +32,22 @@ export default {
   data () {
     return {
       //
-    }
+    };
   }
-}
+};
 </script>
+<style>
+.logo {
+  margin-bottom: 6px;
+  margin-right: 6px;
+  vertical-align: middle;
+    }
+.tool-name {
+  color: #f24f4f;
+  padding-left: 4px;
+  }
+.headline {
+  text-shadow: 1px 1px 6px #ffffff3b;
+}
+</style>
+
