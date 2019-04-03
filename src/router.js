@@ -5,30 +5,29 @@ import Home from './views/Home'
 
 Vue.use(Router)
 
-export const viewRoutes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home,
-    icon: 'home',
-    title: 'Home'
-  },
-  {
-    path: '/users',
-    name: 'users',
-    component: Home,
-    icon: 'group',
-    title: 'Manage Users'
-  },
-
-];
-
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    ...viewRoutes,
+    {
+      path: '/',
+      name: 'home',
+      component: Home,
+      meta: {
+        icon: 'home',
+        title: 'Home'
+      }
+    },
+    {
+      path: '/users',
+      name: 'users',
+      component: Home,
+      meta: {
+        icon: 'group',
+        title: 'Manage Users'
+      }
+    },
     {
       path: '/login',
       name: 'login',

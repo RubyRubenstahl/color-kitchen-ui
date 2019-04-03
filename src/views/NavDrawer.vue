@@ -1,14 +1,14 @@
 <template>
-  <v-navigation-drawer clipped fixed hide-overlay app :mini-variant="true">
+  <v-navigation-drawer clipped fixed hide-overlay app :mini-variant="true" :value="true">
     <v-toolbar flat class="transparent">
       <v-list class="pt-0" dense>
         <v-divider></v-divider>
         <navbar-button
-          v-for="view in views"
-          v-bind:key="view.path"
-          :name="view.title"
-          :to="view.path"
-          :icon="view.icon"
+          v-for="route in routes"
+          v-bind:key="route.path"
+          :name="route.meta.title"
+          :to="route.path"
+          :icon="route.meta.icon"
         />
       </v-list>
     </v-toolbar>
@@ -27,8 +27,11 @@ export default {
     };
   },
   computed: {
-    views: function() {
-      return viewRoutes;
+    routes: function() {
+      const routes = this.$router.options.routes.filter(
+        route => !!route.meta && route.meta.icon
+      );
+      return routes;
     }
   }
 };
