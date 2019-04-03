@@ -1,6 +1,8 @@
 <template>
   <v-app dark>
-    <v-toolbar app>
+    <nav-drawer></nav-drawer>
+
+    <v-toolbar app fixed clipped-left>
       <v-toolbar-title class="headline text-uppercase">
         <img src="/images/krohtech-logo.png" height="32" class="logo">
         <span class="font-weight-light">KROHTOOLS</span>
@@ -26,7 +28,6 @@
         </v-menu>
       </div>
     </v-toolbar>
-
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -34,9 +35,11 @@
 </template>
 
 <script>
+import NavDrawer from "./views/NavDrawer";
 export default {
   name: "App",
-  components: {},
+
+  components: { NavDrawer },
   mounted() {
     this.$store.dispatch("auth/authenticate").catch(error => {
       if (!error.message.includes("Could not find stored JWT")) {
