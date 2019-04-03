@@ -20,7 +20,6 @@
       solo
       label="Password"
       prepend-inner-icon="lock"
-      style="margin-bottom: 24px"
       required
       box
     ></v-text-field>
