@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer clipped fixed v-model="drawer" hide-overlay app mini-variant="mini">
+  <v-navigation-drawer clipped fixed hide-overlay app :mini-variant="true">
     <v-toolbar flat class="transparent">
       <v-list class="pt-0" dense>
         <v-divider></v-divider>
