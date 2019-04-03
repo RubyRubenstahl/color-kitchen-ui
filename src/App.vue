@@ -28,25 +28,36 @@
     </v-toolbar>
 
     <v-content>
-      <login-card/>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import LoginCard from "./components/LoginCard";
-
 export default {
   name: "App",
-  components: {
-    LoginCard
-  },
+  components: {},
   mounted() {
     this.$store.dispatch("auth/authenticate").catch(error => {
       if (!error.message.includes("Could not find stored JWT")) {
         console.error(error);
       }
     });
+
+    this.$store.subscribe((mutation, state) => {
+      if (mutation.type === "auth/setUser") {
+        this.$router.push("/");
+      }
+
+      if (mutation.type === "auth/logout") {
+        this.$router.push("/login");
+      }
+    });
+    console.log(!this.user && !this.$route.name === "login");
+    if (!this.user && this.$route.name !== "login") {
+      console.log("Redirecting to login page");
+      this.$router.push("/login");
+    }
   },
   data() {
     return {
