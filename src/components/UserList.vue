@@ -12,6 +12,25 @@
               <v-list-tile-title>{{user.firstName}} {{user.lastName}}</v-list-tile-title>
               <v-list-tile-sub-title>{{user.email}}</v-list-tile-sub-title>
             </v-list-tile-content>
+
+            <v-list-tile-action>
+              <v-menu close-on-content-click close-on-click offset-y>
+                <template v-slot:activator="{ on }">
+                  <v-btn icon v-on="on">
+                    <v-icon>more_vert</v-icon>
+                  </v-btn>
+                </template>
+                <v-list>
+                  <v-list-tile>
+                    <v-list-tile-action>
+                      <v-icon>rotate_right</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>Reset Password</v-list-tile-title>
+                  </v-list-tile>
+                  <delete-user-action :user="user"></delete-user-action>
+                </v-list>
+              </v-menu>
+            </v-list-tile-action>
           </v-list-tile>
           <v-divider/>
         </div>
@@ -20,8 +39,12 @@
   </v-sheet>
 </template>
 <script>
+import DeleteUserAction from "./DeleteUserAction";
 import { mapState, mapGetters, mapActions } from "vuex";
 export default {
+  components: {
+    DeleteUserAction
+  },
   methods: {
     selectUser: function(user) {
       this.getUser(user._id);
