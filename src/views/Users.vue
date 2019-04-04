@@ -3,10 +3,10 @@
     <v-sheet>
       <v-container class="pa-0">
         <v-layout row fill-height>
-          <v-flex fill-height>
+          <v-flex fill-height grow shrink hidden-xs-only class="user-profile">
             <user-profile :user="selectedUser"></user-profile>
           </v-flex>
-          <v-flex fill-height>
+          <v-flex fill-height shrink xs12>
             <user-list class="user-list"></user-list>
           </v-flex>
         </v-layout>
@@ -32,6 +32,9 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .user-list {
-  max-width: 350px;
+}
+
+.user-profile {
+  min-width: 400px;
 }
 </style>

@@ -4,7 +4,7 @@
       <v-container v-if="user">
         <v-layout column>
           <v-flex>
-            <v-containter>
+            <v-container class="ma-0 mp-0">
               <v-layout>
                 <v-flex>
                   <v-text-field
@@ -12,21 +12,14 @@
                     v-model="user.firstName"
                     label="First Name"
                     prepend-inner-icon="person"
-                    style="margin-bottom: 24px"
                     required
                   ></v-text-field>
                 </v-flex>
                 <v-flex>
-                  <v-text-field
-                    autofocus
-                    v-model="user.lastName"
-                    label="Last Name"
-                    style="margin-bottom: 24px"
-                    required
-                  ></v-text-field>
+                  <v-text-field autofocus v-model="user.lastName" label="Last Name" required></v-text-field>
                 </v-flex>
               </v-layout>
-            </v-containter>
+            </v-container>
 
             <v-text-field
               secondary
@@ -54,7 +47,6 @@
               block
               class="mt-0"
             >
-              <v-icon color="error" transition="scale-transition" v-if="loginError">report_problem</v-icon>&nbsp;&nbsp;
               <span>Save</span>
             </v-btn>
             <!--   </div>-->
