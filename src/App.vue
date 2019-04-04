@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <nav-drawer/>
+    <nav-drawer v-if="user"/>
     <app-toolbar/>
     <v-content>
       <router-view></router-view>
