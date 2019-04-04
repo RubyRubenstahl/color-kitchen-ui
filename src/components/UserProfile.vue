@@ -70,9 +70,16 @@ export default {
   props: {
     user: Object
   },
-  data: () => ({
-    valid: true
-  }),
+  data: function() {
+    return {
+      valid: true,
+      passwordRules: [v => !!v || "Password is required"],
+      emailRules: [
+        v => !!v || "E-mail is required",
+        v => /.+@.+/.test(v) || "E-mail must be valid"
+      ]
+    };
+  },
   methods: {
     saveUser: function() {
       const user = this.$store.state.users.copy;
