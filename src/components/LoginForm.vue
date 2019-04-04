@@ -9,14 +9,12 @@
             :rules="emailRules"
             label="Email"
             prepend-inner-icon="person"
-            style="margin-bottom: 24px"
             required
             solo
             box
           ></v-text-field>
           <v-text-field
             v-model="password"
-            :rules="passwordRules"
             password
             type="password"
             solo
@@ -34,7 +32,6 @@
           <div class="progress-button">
             <v-progress-linear v-show="loginPending" :indeterminate="true" height="2" class="ma-0"></v-progress-linear>
             <v-btn :disabled="!valid" @click="login" @keydown.enter="login" block class="mt-0">
-              <v-icon color="error" transition="scale-transition" v-if="loginError">report_problem</v-icon>&nbsp;&nbsp;
               <span>Log In</span>
             </v-btn>
           </div>

@@ -3,7 +3,9 @@
     <nav-drawer v-if="user"/>
     <app-toolbar/>
     <v-content>
-      <router-view></router-view>
+      <transition name="slide-fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </v-content>
   </v-app>
 </template>
@@ -64,6 +66,25 @@ export default {
 }
 .user-button {
   text-transform: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.2s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
 

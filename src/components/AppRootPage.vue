@@ -2,7 +2,7 @@
   <v-container>
     <v-layout column>
       <v-flex>
-        <div class="headline">{{title}}</div>
+        <div class="headline pb-3">{{title}}</div>
         <slot></slot>
       </v-flex>
     </v-layout>

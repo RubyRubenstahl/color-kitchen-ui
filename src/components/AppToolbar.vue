@@ -7,24 +7,22 @@
       <span class="tool-name">Sentry</span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <div v-if="user">
-      <v-menu close-on-click bottom offset-y transition="scale-transition">
-        <template v-slot:activator="{ on }">
-          <v-btn class="user-button" flat v-on="on">
-            <div class="hidden-xs-only">{{user.email}}&nbsp;&nbsp;</div>
-            <v-icon>person</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-tile @click="logout">
-            <v-list-tile-avatar>
-              <v-icon>exit_to_app</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-title>Logout</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
-    </div>
+    <v-menu v-if="user" close-on-click bottom offset-y transition="scale-transition">
+      <template v-slot:activator="{ on }">
+        <v-btn class="user-button ma-0" flat v-on="on">
+          <div class="hidden-xs-only">{{user.firstName}} {{user.lastName}}&nbsp;&nbsp;</div>
+          <v-icon>person</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-tile @click="logout">
+          <v-list-tile-avatar>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-tile-avatar>
+          <v-list-tile-title>Logout</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
   </v-toolbar>
 </template>
 <script>
