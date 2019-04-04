@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer clipped fixed hide-overlay app :mini-variant="true" :value="true" permanent>
+  <v-navigation-drawer clipped fixed hide-overlay app :mini-variant="true" :value="visible">
     <v-toolbar flat class="transparent">
       <v-list class="pt-0" dense>
         <v-divider></v-divider>
@@ -32,6 +32,9 @@ export default {
         route => !!route.meta && route.meta.icon
       );
       return routes;
+    },
+    visible: function() {
+      return this.routes.length > 1;
     }
   }
 };
