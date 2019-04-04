@@ -3,7 +3,7 @@
     <feathers-vuex-find service="users" :query="{}" watch="query">
       <v-list slot-scope="{ items: users }" two-line class="transparent">
         <div v-for="user in users" v-bind:key="user.id">
-          <v-list-tile @click="selectUser(user)">
+          <v-list-tile @click="selectUser(user)" :class="{selected: isSelected(user)}">
             <v-list-tile-action>
               <v-icon v-if="isAdmin(user)">vpn_key</v-icon>
               <v-icon v-else>account_circle</v-icon>
@@ -32,7 +32,18 @@ export default {
     deleteUser: function(user) {},
     ...mapActions("users", {
       getUser: "get"
-    })
+    }),
+    isSelected: function(user) {
+      return (
+        this.$store.state.users.copy &&
+        this.$store.state.users.copy._id === user._id
+      );
+    }
   }
 };
 </script>
+<style lang="stylus" scoped>
+.selected {
+  background-color: #424242;
+}
+</style>
