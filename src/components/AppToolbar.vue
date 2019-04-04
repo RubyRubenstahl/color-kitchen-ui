@@ -2,7 +2,8 @@
   <v-toolbar app fixed clipped-left>
     <v-toolbar-title class="headline text-uppercase">
       <img src="/images/krohtech-logo.png" height="32" class="logo">
-      <span class="font-weight-light">KROHTOOLS</span>
+      <span class="font-weight-light hidden-xs-only">KROHTOOLS</span>
+      <span class="font-weight-light hidden-sm-and-up">KT</span>
       <span class="tool-name">Sentry</span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
@@ -10,7 +11,7 @@
       <v-menu close-on-click bottom offset-y transition="scale-transition">
         <template v-slot:activator="{ on }">
           <v-btn class="user-button" flat v-on="on">
-            <div>{{user.email}}</div>&nbsp;&nbsp;
+            <div class="hidden-xs-only">{{user.email}}&nbsp;&nbsp;</div>
             <v-icon>person</v-icon>
           </v-btn>
         </template>
