@@ -11,16 +11,27 @@
       </template>
 
       <v-card>
-        <v-card-title class="headline" primary-title>Delete User</v-card-title>
+        <v-sheet color="error darken-1">
+          <v-card-title class="justify-center">
+            <v-icon large left>delete_forever</v-icon>
+            <span class="title font-weight-light">Delete User</span>
+          </v-card-title>
+        </v-sheet>
 
-        <v-card-text>You are about to delete user {{user.firstName}} {{user.lastName}}. This cannot be undone. Are you sure?</v-card-text>
+        <v-card-text class="text-xs-center">
+          <div class="grey--text">You are about to delete user</div>
+          <div>
+            <div class="title ma-2">{{user.firstName}} {{user.lastName}}</div>
+          </div>
+          <div class="grey--text">This cannot be undone. Are you sure?</div>
+        </v-card-text>
 
         <v-divider></v-divider>
 
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn flat @click="cancel">Cancel</v-btn>
-          <v-btn color="error" flat @click="deleteUser">I accept</v-btn>
+          <v-btn color="error" flat @click="deleteUser">DELETE User</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
