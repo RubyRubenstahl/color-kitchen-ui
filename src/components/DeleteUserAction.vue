@@ -19,8 +19,9 @@
         </v-sheet>
 
         <v-card-text class="text-xs-center">
+          <div class="grey--text text--lighten-1">This cannot be undone. Are you sure?</div>
           <v-flex justify-content-center align-center>
-            <v-sheet color="tertiary" class="pa-3 mt-3 mb-5">
+            <v-sheet color="tertiary" class="pa-3 mt-4 mb-1hel">
               <v-list-tile>
                 <v-list-tile-action>
                   <v-icon>account_circle</v-icon>
@@ -32,16 +33,13 @@
               </v-list-tile>
             </v-sheet>
           </v-flex>
-          <div class="grey--text text--lighten-1">This cannot be undone. Are you sure?</div>
         </v-card-text>
-
-        <v-divider></v-divider>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat @click="cancel">Cancel</v-btn>
+          <v-btn @click="cancel">Cancel</v-btn>
 
-          <v-btn color="error" flat @click="deleteUser">
+          <v-btn color="error darken-1" @click="deleteUser">
             <v-icon>delete_forever</v-icon>DELETE User
           </v-btn>
         </v-card-actions>

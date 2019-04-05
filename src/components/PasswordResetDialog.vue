@@ -69,7 +69,7 @@
             class="ma-0"
           ></v-progress-linear>
           <v-btn color="warning darken-3" @click="saveUser" :disabled="!valid">
-            <v-icon>save_alt</v-icon>Save
+            <v-icon>save</v-icon>&nbsp;Save
           </v-btn>
         </div>
       </v-card-actions>

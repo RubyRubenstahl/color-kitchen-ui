@@ -1,74 +1,77 @@
 <template>
-  <v-card class="mx-auto" elevation="0">
-    <v-sheet color="primary darken-1">
-      <v-card-title class="justify-center">
-        <v-icon x-large left>account_circle</v-icon>
-      </v-card-title>
-    </v-sheet>
+  <v-sheet color="secondary darken-1" ma-0 pa-0>
+    <v-card class="mx-auto transparent" elevation="0">
+      <v-sheet color="primary darken-2">
+        <v-card-title class="justify-center">
+          <v-icon x-large left>account_circle</v-icon>
+        </v-card-title>
+      </v-sheet>
 
-    <v-form ref="form" v-model="valid" lazy-validation>
-      <v-container>
-        <v-layout column>
-          <v-flex>
-            <v-container ma-0 pa-0 align-content-space-between>
-              <v-layout>
-                <v-flex>
-                  <v-text-field
-                    ref="initialFocus"
-                    autofocus
-                    solo
-                    v-model="user.firstName"
-                    label="First Name"
-                    :rules="nameRules"
-                    prepend-inner-icon="person"
-                    required
-                  ></v-text-field>
-                  <v-spacer></v-spacer>
-                </v-flex>
-                <v-flex>
-                  <v-text-field
-                    solo
-                    :rules="nameRules"
-                    v-model="user.lastName"
-                    label="Last Name"
-                    required
-                  ></v-text-field>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-flex>
-          <v-flex>
-            <v-text-field
-              secondary
-              solo
-              v-model="user.email"
-              :rules="emailRules"
-              label="Email"
-              prepend-inner-icon="email"
-              class="mt-2 mb-5"
-              required
-            ></v-text-field>
-          </v-flex>
-          <v-flex align-self-end>
-            <v-spacer/>
-            <v-switch
-              class="pb-2 pt-1"
-              v-model="isAdmin"
-              label="Administrator"
-              color="primary"
-              hide-details
-            ></v-switch>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-form>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn @click="saveUser">
-        <v-icon>person</v-icon>Save
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+      <v-form ref="form" v-model="valid" lazy-validation>
+        <v-container>
+          <v-layout column>
+            <v-flex>
+              <v-container ma-0 pa-0 align-content-space-between>
+                <v-layout>
+                  <v-flex>
+                    <v-text-field
+                      ref="initialFocus"
+                      autofocus
+                      solo
+                      v-model="user.firstName"
+                      label="First Name"
+                      :rules="nameRules"
+                      prepend-inner-icon="person"
+                      required
+                    ></v-text-field>
+                    <v-spacer></v-spacer>
+                  </v-flex>
+                  <v-flex>
+                    <v-text-field
+                      solo
+                      :rules="nameRules"
+                      v-model="user.lastName"
+                      label="Last Name"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-flex>
+            <v-flex>
+              <v-text-field
+                secondary
+                solo
+                v-model="user.email"
+                :rules="emailRules"
+                label="Email"
+                prepend-inner-icon="email"
+                class="mt-2 mb-5"
+                required
+              ></v-text-field>
+            </v-flex>
+            <v-flex align-self-end>
+              <v-spacer/>
+              <v-switch
+                class="pb-2 pt-1"
+                v-model="isAdmin"
+                label="Administrator"
+                color="primary"
+                hide-details
+              ></v-switch>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-form>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn @click="saveUser">
+          <v-icon>save</v-icon>&nbsp;
+          Save&nbsp;
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-sheet>
 </template>
 
 <script>
