@@ -8,15 +8,21 @@ const { service, auth, FeathersVuex } = feathersVuex(feathersClient, { idField: 
 Vue.use(Vuex)
 Vue.use(FeathersVuex)
 
+
+
 export default new Vuex.Store({
   plugins: [
     service('users'),
     auth({ userService: 'users' })
   ],
   state: {
+    addUserDialogOpen: false,
 
   },
   mutations: {
+    setAddUserDialogOpen: function (state, payload) {
+      state.addUserDialogOpen = payload;
+    }
 
   },
   actions: {
