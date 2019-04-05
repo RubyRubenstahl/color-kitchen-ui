@@ -136,7 +136,6 @@ export default {
   methods: {
     saveUser: function() {
       const user = this.user;
-      debugger;
       this.$store
         .dispatch("users/create", user)
         .then(() => this.closeForm())
