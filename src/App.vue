@@ -3,6 +3,8 @@
     <nav-drawer v-if="user"/>
     <app-toolbar/>
     <v-content>
+      <add-user-dialog></add-user-dialog>
+
       <transition name="slide-fade" mode="out-in">
         <router-view></router-view>
       </transition>
@@ -13,9 +15,11 @@
 <script>
 import NavDrawer from "./views/NavDrawer";
 import AppToolbar from "./components/AppToolbar";
+import AddUserDialog from "./components/AddUserDialog";
+
 export default {
   name: "App",
-  components: { NavDrawer, AppToolbar },
+  components: { NavDrawer, AppToolbar, AddUserDialog },
   mounted() {
     this.$store.dispatch("auth/authenticate").catch(error => {
       if (!error.message.includes("Could not find stored JWT")) {
