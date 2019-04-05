@@ -4,7 +4,7 @@
     <app-toolbar/>
     <v-content>
       <add-user-dialog></add-user-dialog>
-
+      <password-reset-dialog></password-reset-dialog>
       <transition name="slide-fade" mode="out-in">
         <router-view></router-view>
       </transition>
@@ -16,10 +16,11 @@
 import NavDrawer from "./views/NavDrawer";
 import AppToolbar from "./components/AppToolbar";
 import AddUserDialog from "./components/AddUserDialog";
+import PasswordResetDialog from "./components/PasswordResetDialog";
 
 export default {
   name: "App",
-  components: { NavDrawer, AppToolbar, AddUserDialog },
+  components: { NavDrawer, AppToolbar, AddUserDialog, PasswordResetDialog },
   mounted() {
     this.$store.dispatch("auth/authenticate").catch(error => {
       if (!error.message.includes("Could not find stored JWT")) {

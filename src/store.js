@@ -17,12 +17,20 @@ export default new Vuex.Store({
   ],
   state: {
     addUserDialogOpen: false,
+    passwordResetDialogUser: null,
+    passwordResetDialogOpen: true,
 
   },
   mutations: {
-    setAddUserDialogOpen: function (state, payload) {
-      state.addUserDialogOpen = payload;
-    }
+    setAddUserDialogOpen: function (state, open) {
+      state.addUserDialogOpen = open;
+    },
+    setPasswordResetDialogUser: function (state, user) {
+      state.passwordResetDialogUser = user;
+    },
+    setPasswordResetDialogOpen: function (state, open) {
+      state.passwordResetDialogOpen = open;
+    },
 
   },
   actions: {

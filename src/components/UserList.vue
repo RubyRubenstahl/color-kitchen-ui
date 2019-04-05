@@ -20,7 +20,7 @@
                 </v-btn>
               </template>
               <v-list>
-                <v-list-tile>
+                <v-list-tile @click="resetPassword(user)">
                   <v-list-tile-action>
                     <v-icon>rotate_right</v-icon>
                   </v-list-tile-action>
@@ -46,6 +46,10 @@ export default {
   methods: {
     selectUser: function(user) {
       this.getUser(user._id);
+    },
+    resetPassword: function(user) {
+      this.$store.commit("setPasswordResetDialogUser", user);
+      this.$store.commit("setPasswordResetDialogOpen", true);
     },
     isAdmin: function(user) {
       return user.roles && user.roles.includes("admin");
