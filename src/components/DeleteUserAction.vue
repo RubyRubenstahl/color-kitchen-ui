@@ -1,6 +1,6 @@
 <template>
   <div class="text-xs-center">
-    <v-dialog v-model="dialog" width="300">
+    <v-dialog v-model="dialog" persistent width="300">
       <template v-slot:activator="{ on }">
         <v-list-tile v-on="on">
           <v-list-tile-action>

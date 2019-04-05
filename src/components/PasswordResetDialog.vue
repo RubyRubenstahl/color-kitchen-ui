@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :value="isOpen" v-if="user" max-width="450">
+  <v-dialog :value="isOpen" v-if="user" persistent max-width="450">
     <v-card class="mx-auto" dark>
       <v-sheet color="warning darken-3">
         <v-card-title class="justify-center">
