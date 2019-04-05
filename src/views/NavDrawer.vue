@@ -35,11 +35,27 @@ export default {
       mini: true
     };
   },
+  methods: {
+    isAdmin: function() {
+      return (
+        this.$store.state.auth.user.roles &&
+        this.$store.state.auth.user.roles.includes("admin")
+      );
+    }
+  },
   computed: {
     routes: function() {
-      const routes = this.$router.options.routes.filter(
-        route => !!route.meta && route.meta.icon
-      );
+      const routes = this.$router.options.routes
+        .filter(route => !!route.meta && route.meta.icon)
+        .filter(route => {
+          let show = false;
+          if (route.meta && route.meta.restrictToAdmin) {
+            show = this.isAdmin();
+          } else {
+            show = true;
+          }
+          return show;
+        });
       return routes;
     },
     visible: function() {

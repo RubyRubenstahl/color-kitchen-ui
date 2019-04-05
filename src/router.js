@@ -26,7 +26,8 @@ export default new Router({
       component: Users,
       meta: {
         icon: 'group',
-        title: 'Manage Users'
+        title: 'Manage Users',
+        restrictToAdmin: true
       }
     },
     {
