@@ -27,6 +27,11 @@ export default {
     selectedUser: function() {
       return this.$store.state.users.copy;
     }
+  },
+  methods: {
+    openAddUserDialog: function() {
+      this.$store.commit("setAddUserDialogOpen", true);
+    }
   }
 };
 </script>
