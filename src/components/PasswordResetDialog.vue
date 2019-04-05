@@ -59,9 +59,19 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn @click="closeForm">Cancel</v-btn>
-        <v-btn color="warning darken-3" @click="saveUser">
-          <v-icon>save_alt</v-icon>Save
-        </v-btn>
+
+        <div class="progress-button ml-2">
+          <v-progress-linear
+            color="warning"
+            v-show="savePending"
+            :indeterminate="true"
+            height="2"
+            class="ma-0"
+          ></v-progress-linear>
+          <v-btn color="warning darken-3" @click="saveUser" :disabled="!valid">
+            <v-icon>save_alt</v-icon>Save
+          </v-btn>
+        </div>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -76,7 +86,7 @@ export default {
       confirmPassword: "",
       saveError: null,
 
-      valid: true,
+      valid: false,
       nameRules: [v => !!v || "Full name is required"],
       passwordRules: [
         v => !!v || "Password is required",
@@ -102,7 +112,9 @@ export default {
       const user = this.user;
       this.$store
         .dispatch("users/patch", [user._id, { password: this.newPassword }])
-        .then(() => this.closeForm())
+        .then(() => {
+          this.closeForm();
+        })
         .catch(err => err);
     },
     validate: function() {
@@ -110,7 +122,10 @@ export default {
     },
     closeForm() {
       this.$store.commit("setPasswordResetDialogOpen", false);
+      this.newPassword = "";
+      this.confirmPassword = "";
       this.$refs.form.reset();
+      this.valid = false;
     }
   },
   computed: {
@@ -119,6 +134,9 @@ export default {
     },
     isOpen: function() {
       return this.$store.state.passwordResetDialogOpen;
+    },
+    savePending: function() {
+      return this.$store.state.users.isPatchPending;
     }
   }
 };
