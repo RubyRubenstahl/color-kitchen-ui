@@ -1,6 +1,10 @@
 <template>
   <app-root-page>
-    <div class="home">Home content</div>
+    <v-sheet lg8 sm4 elevation="4" height="400">
+      <div
+        class="grey--text text--darken-2 display-2 text-xs-center pa-5"
+      >This is where the main app content will go</div>
+    </v-sheet>
   </app-root-page>
 </template>
 
