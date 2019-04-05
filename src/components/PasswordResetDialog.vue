@@ -36,6 +36,7 @@
                 prepend-inner-icon="lock"
                 required
                 class="mb-2"
+                @keyup="validate"
               ></v-text-field>
               <v-text-field
                 v-model="confirmPassword"
@@ -47,6 +48,7 @@
                 prepend-inner-icon="lock"
                 required
                 @blur="validate"
+                @keyup="validate"
               ></v-text-field>
               <div>{{saveError}}</div>
               <!--   </div>-->
@@ -82,7 +84,7 @@ export default {
       ],
       confirmPasswordRules: [
         v => !!v || "Password confirmation",
-        v => v === this.user.password || "Passwords must match"
+        v => v === this.newPassword || "Passwords must match"
       ],
 
       emailRules: [
