@@ -26,7 +26,7 @@
                   </v-list-tile-action>
                   <v-list-tile-title>Reset Password</v-list-tile-title>
                 </v-list-tile>
-                <delete-user-action :user="user"></delete-user-action>
+                <delete-user-action :user="user" v-if="!isSelf(user)"></delete-user-action>
               </v-list>
             </v-menu>
           </v-list-tile-action>
@@ -54,6 +54,10 @@ export default {
     isAdmin: function(user) {
       return user.roles && user.roles.includes("admin");
     },
+    isSelf: function(user) {
+      return user._id === this.$store.state.auth.user._id;
+    },
+
     deleteUser: function(user) {},
     ...mapActions("users", {
       getUser: "get"
